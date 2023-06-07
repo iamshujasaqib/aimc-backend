@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\ImagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,4 @@ Route::post('/users/register', [UsersController::class,'register']);
 Route::post('/students/register', [StudentsController::class,'register']);
 Route::post('/auth/login', [AuthController::class,'login']);
 Route::get('/students/get', [StudentsController::class,'get']);
+Route::post('/image/upload', [ImagesController::class,'upload']);

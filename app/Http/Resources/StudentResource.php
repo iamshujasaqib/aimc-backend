@@ -19,7 +19,7 @@ class StudentResource extends JsonResource
             'firstName' => $this->first_name,
             'lastName'  => $this->last_name,
             'email'     => $this->email,
-            'avatar'    => $this->avatar,
+            'avatar'    => $this->avatar ? url('/').'/'.$this->avatar : null,
         ];
     }
 }

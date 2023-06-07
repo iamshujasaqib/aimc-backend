@@ -25,13 +25,14 @@ class StudentsController extends Controller
             'first_name'    => $data['firstName'],
             'last_name'     => $data['lastName'],
             'email'         => $data['email'],
+            'avatar'        => optional($data)['avatar'],
         ]);
 
         return new StudentResource($student);
     }
 
     public function get( Request $request ){
-        $all = Students::all();
+        $all = Students::latest()->get();
         return StudentResource::collection($all);
     }
 }
