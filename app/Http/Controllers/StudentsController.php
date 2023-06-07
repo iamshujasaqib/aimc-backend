@@ -57,13 +57,13 @@ class StudentsController extends Controller
         ]);
         
         $student = Students::whereId($data['id'])->first();
-
+        $update = $data['avatar'] != url('/').'/'.$student->avatar;
         if(isset($student)){
             $student->update([
                 'first_name'    => $data['firstName'],
                 'last_name'     => $data['lastName'],
                 'email'         => $data['email'],
-                'avatar'        => optional($data)['avatar'],
+                'avatar'        => $update ? optional($data)['avatar'] : $student->avatar,
             ]);
         }
 
