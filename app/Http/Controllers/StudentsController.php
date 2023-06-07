@@ -35,4 +35,39 @@ class StudentsController extends Controller
         $all = Students::latest()->get();
         return StudentResource::collection($all);
     }
+
+    public function find ( Request $request){
+
+        $data = $request->validate([
+            'id' => "required",
+        ]);
+
+        $student = Students::whereId($data['id'])->first();
+
+        return new StudentResource($student);
+    }
+
+    public function update(Request $request ){
+        $data = $request->validate([
+            'firstName'     =>'required',
+            'lastName'      =>'required',
+            'email'         =>'required',
+            'avatar'        =>'sometimes',
+            'id'            =>'required',
+        ]);
+        
+        $student = Students::whereId($data['id'])->first();
+
+        if(isset($student)){
+            $student->update([
+                'first_name'    => $data['firstName'],
+                'last_name'     => $data['lastName'],
+                'email'         => $data['email'],
+                'avatar'        => optional($data)['avatar'],
+            ]);
+        }
+
+        return new StudentResource($student);
+
+    }
 }

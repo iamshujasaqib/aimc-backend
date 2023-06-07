@@ -22,8 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::post('/users/register', [UsersController::class,'register']);
 Route::post('/students/register', [StudentsController::class,'register']);
 Route::post('/auth/login', [AuthController::class,'login']);
 Route::get('/students/get', [StudentsController::class,'get']);
+Route::post('/students/find', [StudentsController::class,'find']);
+Route::put('/students/update', [StudentsController::class,'update']);
 Route::post('/image/upload', [ImagesController::class,'upload']);
