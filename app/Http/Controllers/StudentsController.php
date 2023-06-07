@@ -29,4 +29,9 @@ class StudentsController extends Controller
 
         return new StudentResource($student);
     }
+
+    public function get( Request $request ){
+        $all = Students::all();
+        return StudentResource::collection($all);
+    }
 }
